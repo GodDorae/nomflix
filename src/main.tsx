@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
@@ -76,16 +75,16 @@ a {
 `;
 
 const client = new QueryClient();
+const container = document.getElementById("root") as HTMLElement;
+const root = ReactDOM.createRoot(container);
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <RecoilRoot>
-      <QueryClientProvider client={client}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <RouterProvider router={router} />
-        </ThemeProvider>
-      </QueryClientProvider>
-    </RecoilRoot>
-  </React.StrictMode>
+root.render(
+  <RecoilRoot>
+    <QueryClientProvider client={client}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </QueryClientProvider>
+  </RecoilRoot>
 );
